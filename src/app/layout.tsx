@@ -1,20 +1,17 @@
-'use client';
+// 'use client';
 import React, { useEffect } from 'react';
 import './globals.css';
+import OCEventListener from '@/lib/OCEventListener';
+import Topnav from '@/components/Topnav';
+import Bottomnav from '@/components/Bottomnav';
+import OCClient from '@/lib/OCClient';
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    // 1️⃣ Load OC client script on the browser
-    const script = document.createElement('script');
-    script.src = '//localhost:3030/oc-client/client.js';
-    script.async = true;
-
-    document.body.appendChild(script);
-  }, []);
+  
 
   return (
     <html lang="en">
@@ -29,7 +26,15 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Topnav />
+        <OCClient />
+        <OCEventListener />
+        {children}
+        <Bottomnav />
+        </body>
+
+
     </html>
   );
 }
