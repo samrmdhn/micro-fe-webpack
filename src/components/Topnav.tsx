@@ -4,7 +4,7 @@ const Topnav = async() => {
 
     async function getOCComponent(name: string, query: Record<string, string> = {}) {
       const params = new URLSearchParams(query).toString();
-      const res = await fetch(`http://localhost:3030/${name}/1.0.0/?${params}`, {
+      const res = await fetch(`https://oc-component.onrender.com/${name}/1.0.0/?${params}`, {
         cache: 'no-store', // SSR refetch
       });
     
